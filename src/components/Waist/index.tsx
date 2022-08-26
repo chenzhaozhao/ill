@@ -1,7 +1,7 @@
 import { View } from "@tarojs/components";
 import { PickerView, Button } from "antd-mobile";
-import { useMemo } from "react";
-const Waist = ({ changeStep, option }) => {
+import { useMemo, useState } from "react";
+const Waist = ({ changeStep, option,questionCode }) => {
   const height = useMemo(() => {
     const { maxValue, minValue } = option;
     let arr: string[] = [];
@@ -10,6 +10,7 @@ const Waist = ({ changeStep, option }) => {
     }
     return arr.map(num => ({ label: num, value: num }));
   }, [option]);
+  const [value,setValue]=useState(option.defaultValue)
   return (
     <View className=" text bg-white mx-1-2  px-1-2 py-1 br-1 text-center relative ">
       <View className="color-grey" style={{ float: "right" }}>
@@ -20,12 +21,13 @@ const Waist = ({ changeStep, option }) => {
           columns={[height]}
           value={[String(option.defaultValue)]}
           style={{ "--height": "400px", "--item-height": "2rem" }}
+          onChange={(v)=>setValue(v[0])}
         />
         <Button
           block
           color="primary"
           size="large"
-          onClick={changeStep}
+          onClick={()=>changeStep({[questionCode]:[value]})}
           style={{ "--border-radius": "2rem" }}
         >
           继续

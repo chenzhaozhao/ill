@@ -1,11 +1,20 @@
 import { View } from "@tarojs/components";
 import { PickerView, Button } from "antd-mobile";
-const BMI = ({ changeStep, options }) => {
+import { useState } from "react";
+const BMI = ({ changeStep, options, questionCode }) => {
+  const [values, setValues] = useState(options.map(({ defaultValue }) => defaultValue));
+  const go = () => {
+    changeStep({ [questionCode]: values });
+    
+  };
   return (
     <View className=" text bg-white mx-1-2  px-1-2 py-1 br-1 text-center relative ">
       <View className=" flex">
         {options.map(
-          ({ optionContent, defaultValue, unit, minValue, maxValue }) => {
+          (
+            { optionContent, defaultValue, unit, minValue, maxValue },
+            index
+          ) => {
             const range = (() => {
               let arr: string[] = [];
               for (let i = minValue; i <= maxValue; i++) {
@@ -18,8 +27,13 @@ const BMI = ({ changeStep, options }) => {
                 <View className=" color-blue">{optionContent}</View>
                 <PickerView
                   columns={[range, [unit]]}
-                  value={[String(defaultValue)]}
+                  defaultValue={[String(defaultValue)]}
                   style={{ "--height": "400px", "--item-height": "2rem" }}
+                  onChange={v => {
+                    let vs = values;
+                    vs[index] = v[0];
+                    setValues(vs);
+                  }}
                 />
               </View>
             );
@@ -31,7 +45,7 @@ const BMI = ({ changeStep, options }) => {
           block
           color="primary"
           size="large"
-          onClick={changeStep}
+          onClick={go}
           style={{ "--border-radius": "2rem" }}
         >
           继续

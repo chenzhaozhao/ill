@@ -2,10 +2,12 @@ import { View, Text } from "@tarojs/components";
 import { Button, Picker } from "antd-mobile";
 import { useState, useEffect } from "react";
 import { DownOutline } from "antd-mobile-icons";
-const PressSelect = ({ changeStep, options, required }) => {
+const PressSelect = ({ changeStep, options, required,questionCode }) => {
   const [Options, setOptions] = useState<any[]>([]);
   useEffect(() => {setOptions(options);}, []);
-  console.log(Options,'uuuu')
+  const go=()=>{
+    changeStep({[questionCode]:Options.map(({value})=>value)})
+  }
   return (
     <View className=" text bg-white mx-1-2  px-1-2 py-1 br-1 text-center relative ">
       {!required && (
@@ -89,7 +91,8 @@ const PressSelect = ({ changeStep, options, required }) => {
           block
           color="primary"
           size="large"
-          onClick={changeStep}
+          disabled={Options.filter(({value})=>value).length<options.length}
+          onClick={go}
           style={{ "--border-radius": "2rem" }}
         >
           继续

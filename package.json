@@ -53,6 +53,7 @@
     "@tarojs/taro-h5": "3.5.3",
     "antd-mobile": "^5.21.0",
     "axios": "^0.27.2",
+    "dayjs": "^1.11.5",
     "react": "^18.0.0",
     "react-dom": "^18.0.0"
   },
