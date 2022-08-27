@@ -5,6 +5,8 @@ import request from "../../utils/request";
 import "./index.scss";
 import { Divider, Tag } from "antd-mobile";
 import RiskLevel from "../../components/RiskLevel";
+import Process from "../../components/Process";
+import "../index/index.scss"
 const Report = () => {
   const [assessmentReport, setAssessmentReport] = useState<{
     [key: string]: any;
@@ -12,11 +14,7 @@ const Report = () => {
   useEffect(() => {
     (async () => {
       //  @ts-ignore
-      const {
-        configId,
-        reportId,
-        userId
-      } = Taro.getCurrentInstance().router?.params;
+      const {configId,reportId,userId} = Taro.getCurrentInstance().router?.params;
       const {
         data: {
           data: { assessmentReport }
@@ -35,8 +33,8 @@ const Report = () => {
     })();
   }, []);
   return (
-    <View className="main">
-      <View className=" title">健康状态评估报告</View>
+    <View className="r-main">
+      <View className=" titleX">健康状态评估报告</View>
       <View className="base-info">
         <View className=" sex">
           {assessmentReport?.userInfo?.gender === "1" ? (
@@ -140,9 +138,10 @@ const Report = () => {
       {assessmentReport?.report?.indicatorAnalysis?.length > 0 && (
         <View className="indicator">
           {assessmentReport?.report?.indicatorAnalysis?.map(
-            ({ indicatorName, descriptions }) => (
+            ({ indicatorName, descriptions,indicatorRanges,indicatorValue }) => (
               <View key={indicatorName}>
                 <View className="indicatorName">{indicatorName}</View>
+                <Process indicatorRanges={indicatorRanges} indicatorValue={indicatorValue} />
                 <View className="descriptions">{descriptions}</View>
               </View>
             )

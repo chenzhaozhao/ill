@@ -129,7 +129,7 @@ const Index = () => {
         healthProblems: [{ code: "IMMUNITY", riskLevel: null }]
       }
     });
-    Taro.redirectTo({
+    Taro.navigateTo({
       url: `/pages/report/index?configId=${configId}&reportId=${reportId}&userId=${userId}`
     });
     console.log(reportId);

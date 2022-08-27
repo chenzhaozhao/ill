@@ -1,11 +1,12 @@
-.main {
+.r-main {
     background-image: url(https://apps.jiankangyouyi.com/e-standard-product/theme1/report/health/health-bg.png);
     min-height: 100%;
     background-size: contain;
     background-repeat: no-repeat;
     background-color: #f1f1f1;
+    padding-bottom: 2rem;
 
-    .title {
+    .titleX {
         font-size: 1.2rem;
         font-weight: 600;
         color: #fff;
@@ -101,7 +102,6 @@
         padding: .8rem;
         padding-bottom: 1rem;
         border-radius: .4rem;
-
         .descriptions {
             margin:.5rem;
             border: 1px solid #3187ff;

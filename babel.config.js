@@ -7,5 +7,4 @@ module.exports = {
       ts: true
     }]
   ],
-  // "plugins": [["import", { "style": "css", "libraryName": "antd-mobile","libraryDirectory": "es" }]]
 }
