@@ -19,7 +19,7 @@ const Waist = ({ changeStep, option,questionCode }) => {
       <View className=" mt-1">
         <PickerView
           columns={[height]}
-          value={[String(option.defaultValue)]}
+          value={[value]}
           style={{ "--height": "400px", "--item-height": "2rem" }}
           onChange={(v)=>setValue(v[0])}
         />

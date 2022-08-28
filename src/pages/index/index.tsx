@@ -184,7 +184,7 @@ const Index = () => {
     <View className="main">
       <ProgressBar percent={(step / total) * 100} />
       <View className="flex flex-end " style={{ marginTop: ".4rem" }}>
-        <View className=" rate">
+        <View className=" rate flex">
           <Text>{step <= total ? step : total} </Text>
           <Text style={{ color: "#ccc", fontWeight: "400" }}>/</Text>
           <Text> {total} </Text>
