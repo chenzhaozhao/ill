@@ -28,7 +28,7 @@ const Process = ({ indicatorRanges, indicatorValue }) => {
       <View
         className="absolute"
         style={{
-          width: `${(indicatorValue / total) * 100}%`,
+          width: `${(indicatorValue / total) * 100>100?100:(indicatorValue / total) * 100}%`,
           backgroundColor: "rgb(241, 108, 108)",
           height: ".6rem",
           top: "0",
@@ -42,7 +42,7 @@ const Process = ({ indicatorRanges, indicatorValue }) => {
             style={{ width: `${((endValue - startValue) / total) * 100}%` }}
           >
             <View>
-              {startValue || 10}
+              {startValue || 1}
               {description}
             </View>
           </View>
